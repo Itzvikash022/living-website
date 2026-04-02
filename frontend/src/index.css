@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+:root {
+  --engine-bg: #18181b;
+  --engine-fg: #f4f4f5;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body.mood-calm {
+  background-color: #fdfbf7;
+  color: #4a5568;
+}
+
+body.mood-weird {
+  background-color: #fce4ec;
+  color: #2c3e50;
+}
+
+body.mood-chaos {
+  background-color: #0a0a0a;
+  color: #00ff00;
+}
+
+body {
+  transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out, filter 2s ease-in-out;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--engine-bg) !important;
+  color: var(--engine-fg) !important;
+}
+
+/* Procedural Effects Arrays */
+body.fx-glitch main {
+  animation: glitch 0.5s infinite;
+}
+body.fx-rotate main {
+  animation: weirdRotate 8s infinite alternate ease-in-out;
+}
+body.fx-distort main {
+  animation: distortionBlur 4s infinite alternate;
+}
+body.fx-invert main {
+  filter: invert(0.9);
+}
+body.fx-distort-cursor {
+  cursor: cell;
+}
+
+/* Trailing Ambush Resolution Visuals */
+body.after-effect-glitch main {
+  filter: contrast(1.5) saturate(2) hue-rotate(15deg);
+  opacity: 0.95;
+  animation: float 2s infinite, weirdRotate 5s infinite; 
+}
+
+body.veteran-chaos {
+  filter: contrast(1.1) saturate(1.2);
+}
+
+body.veteran-loyal {
+  filter: sepia(0.2);
+}
+
+body.daily-champion {
+  box-shadow: inset 0 0 120px rgba(234, 179, 8, 0.4);
+}
+
+body.secret-theme {
+  filter: invert(1) hue-rotate(180deg) contrast(1.2);
+  background-color: #050505;
+  color: #fff;
+}
+
+body.personality-chaotic {
+  cursor: crosshair;
+}
+
+body.personality-chaotic main {
+  animation: weirdRotate 6s infinite ease-in-out;
+}
+
+body.personality-curious {
+  cursor: help;
+}
+
+body.personality-curious main {
+  box-shadow: 0px 40px 100px -20px rgba(0, 255, 255, 0.05);
+}
+
+body.personality-calm {
+  cursor: default;
+}
+
+body.global-event-glitch main {
+  animation: glitch 0.5s infinite;
+}
+
+body.global-event-invert {
+  filter: invert(1) hue-rotate(90deg);
+  background-color: #222;
+}
+
+body.global-event-fake_warning main {
+  box-shadow: inset 0 0 200px rgba(255, 0, 0, 0.4);
+}
+
+body.global-event-extreme_shift {
+  filter: hue-rotate(180deg) saturate(3);
+}
+
+/* Custom Reward Unlock Themes */
+body.theme_matrix {
+  background-color: #0d0208 !important;
+  color: #00ff41 !important;
+}
+body.theme_matrix main {
+  font-family: monospace;
+}
+
+body.theme_abyss {
+  background-color: #000 !important;
+  color: #555 !important;
+}
+
+body.theme_golden {
+  background-color: #111 !important;
+  color: #facc15 !important;
+}
+body.theme_golden main {
+  box-shadow: 0 0 100px -20px rgba(250,204,21,0.2) !important;
+}
+
+/* Interactive Choice Overrides */
+body.choice-calm main {
+  filter: contrast(0.9) brightness(1.2) sepia(0.3);
+  transition: all 2s;
+}
+
+body.choice-chaos main {
+  animation: weirdRotate 0.8s infinite;
+  filter: saturate(3) hue-rotate(-45deg);
+}
+
+body.choice-corruption {
+  filter: invert(0.8) sepia(1) hue-rotate(90deg) !important;
+}
+
+body.choice-purge main {
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+body.theme_meme_storm main {
+  animation: weirdRotate 1s infinite alternate, float 2s infinite ease-in-out !important;
+  filter: hue-rotate(90deg) saturate(3) drop-shadow(0 0 50px rgba(255,0,255,0.8)) !important;
+  color: #ff00ff !important;
+}
+
+/* Base keyframes utilized dynamically by Tailwind arbitrary animate-* classes */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes fallAway {
+  0% { transform: translateY(0) scale(1) rotate(0); opacity: 1; filter: contrast(1); }
+  10% { transform: translateY(-20px) scale(1.1) rotate(-10deg); filter: contrast(2) brightness(2); }
+  15% { transform: translateY(0) scale(0.9) rotate(5deg); }
+  20% { transform: translateY(-10px) scale(1) rotate(15deg); }
+  100% { transform: translateY(150vh) rotate(180deg) scale(0.2); opacity: 0; }
+}
+
+@keyframes heliSequence {
+  0% { transform: translate(-100vw, -10vh) rotate(15deg) scaleX(1); }
+  25% { transform: translate(100vw, 10vh) rotate(5deg) scaleX(1); }
+  30% { transform: translate(100vw, -10vh) rotate(-15deg) scaleX(-1); }
+  55% { transform: translate(0vw, 0vh) rotate(0deg) scaleX(-1); }
+  65% { transform: translate(0vw, 0vh) rotate(0deg) scaleX(-1); }
+  100% { transform: translate(0vw, -150vh) rotate(-20deg) scaleX(-1); }
+}
+
+@keyframes cargoDrop {
+  0%, 60% { transform: translateY(0); opacity: 1; }
+  68% { transform: translateY(20vh); opacity: 1; }
+  72% { transform: translateY(22vh); opacity: 0; }
+  100% { transform: translateY(25vh); opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) scale(1); }
+  20%, 60% { transform: translateX(-50px) translateY(-20px) rotate(-5deg) scale(1.1); }
+  40%, 80% { transform: translateX(50px) translateY(20px) rotate(5deg) scale(1.1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glitch {
+  0% { transform: skew(0deg) scale(1); filter: hue-rotate(0deg); }
+  20% { transform: skew(-2deg) scale(1.01); filter: hue-rotate(90deg); }
+  40% { transform: skew(2deg) scale(0.99); filter: contrast(1.5) hue-rotate(180deg); }
+  60% { transform: skew(-2deg) scale(1.02); filter: hue-rotate(270deg); }
+  80% { transform: skew(2deg) scale(0.98); filter: invert(100%); }
+  100% { transform: skew(0deg) scale(1); filter: hue-rotate(0deg); }
+}
+
+@keyframes weirdRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  33% { transform: rotate(1deg) scale(1.02); }
+  66% { transform: rotate(-2deg) scale(0.98); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes distortionBlur {
+  0% { filter: blur(0px) contrast(1); }
+  50% { filter: blur(2px) contrast(1.3) saturate(1.5); }
+  100% { filter: blur(0px) contrast(1); }
+}
