@@ -15,11 +15,7 @@ let localState = null;
 // Connect Mongoose ONLY if not already connected (Crucial for Vercel Serverless)
 async function connectDB() {
     if (mongoose.connection.readyState >= 1) return;
-    return mongoose.connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        connectTimeoutMS: 10000,
-    });
+    return mongoose.connect(process.env.MONGO_URI);
 }
 
 async function getOrInitState() {
